@@ -18,12 +18,9 @@ jobs:
 
           docker-compose -f docker-compose.prod.yaml build
 
-          docker tag cicd-app-prod:hot ghcr.io/chethanakh/cicd_with_docker/app:$GITHUB_REF_NAME
-          docker tag cicd-static-prod:hot ghcr.io/chethanakh/cicd_with_docker/static:$GITHUB_REF_NAME
-          docker tag cicd-proxy-prod:hot ghcr.io/chethanakh/cicd_with_docker/proxy:$GITHUB_REF_NAME
+          docker tag cicd-app-prod:hot ghcr.io/chethanakh/cicd_with_docker/app:hot
 
-          docker push ghcr.io/chethanakh/cicd_with_docker/app:$GITHUB_REF_NAME
-          docker push ghcr.io/chethanakh/cicd_with_docker/static:$GITHUB_REF_NAME
-          docker push ghcr.io/chethanakh/cicd_with_docker/proxy:$GITHUB_REF_NAME
+          docker push ghcr.io/chethanakh/cicd_with_docker/app:hot
+
 
      - run: echo "build success"
