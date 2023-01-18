@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+ app:
+  image: cicd-app-prod:hot
+  build:
+   context: .
+   args:
+       UID: 1000
+   dockerfile: ./prod.dockerfile
+   cache_from:
+    - cicd-app-prod:hot
+ proxy:
+  image: cicd-proxy-prod:hot
+  build:
+   context: .
+   dockerfile: ./proxy.dockerfile
+   cache_from:
+    - cicd-proxy-prod:hot
+ static:
+  image: cicd-static-prod:hot
+  build:
+   context: .
+   dockerfile: ./static.dockerfile
+   cache_from:
+    - cicd-static-prod:hot
