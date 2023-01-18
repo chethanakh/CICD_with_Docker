@@ -16,11 +16,15 @@ jobs:
 
           docker pull ghcr.io/${{ github.repository }}/app:$GITHUB_REF_NAME && echo "$GITHUB_REF_NAME already exists!" && exit 1 || echo "Building $GITHUB_REF_NAME..."
 
+          docker pull ghcr.io/${{ github.repository }}/app:hot && docker tag ghcr.io/${{ github.repository }}/app:hot cicd-app-prod:hot || true
+
           docker-compose -f docker-compose.prod.yaml build
 
           docker tag cicd-app-prod:hot ghcr.io/${{ github.repository }}/app:hot
 
-          docker push ghcr.io/${{ github.repository }}/app:hot
+          docker tag cicd-app-prod:hot ghcr.io/${{ github.repository }}/app:$GITHUB_REF_NAME
+
+          docker push ghcr.io/${{ github.repository }}/app:$GITHUB_REF_NAME
 
 
      - run: echo "build success"
