@@ -24,7 +24,7 @@ jobs:
 
           docker tag cicd-app-prod:hot ghcr.io/${{ github.repository }}/app:$GITHUB_REF_NAME
 
-          docker push ghcr.io/${{ github.repository }}/app:$GITHUB_REF_NAME
+          docker push ghcr.io/${{ github.repository }}/app:hot
 
 
      - run: echo "build success"
