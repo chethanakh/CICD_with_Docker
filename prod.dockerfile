@@ -16,7 +16,7 @@ RUN apk add --update npm
 RUN docker-php-ext-install pdo_mysql
 
 COPY ./ /var/www/html
-COPY prod.env .env
+# COPY prod.env .env
 RUN composer install
 RUN npm install
 RUN npm install -g npm@latest
